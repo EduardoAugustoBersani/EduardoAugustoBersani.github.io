@@ -165,6 +165,10 @@
   .card h3{font-family:"Chakra Petch",sans-serif;font-size:clamp(20px,2.6vw,26px);letter-spacing:-.01em;margin-bottom:10px}
   .card .sub{color:var(--muted);font-size:15px;margin-bottom:18px;max-width:64ch}
   .card .stackline{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--cyan);margin-bottom:18px}
+  .card .repo{position:absolute;top:24px;right:26px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--dim);border:1px solid var(--line);border-radius:7px;padding:5px 11px;display:inline-flex;align-items:center;gap:6px;transition:.2s;z-index:3}
+  .card .repo:hover{color:var(--cyan);border-color:var(--cyan);transform:translateY(-1px)}
+  .card .repo svg{width:13px;height:13px}
+  @media(max-width:520px){.card .repo{position:static;align-self:flex-start;margin-bottom:14px}}
   .card .metrics{display:flex;flex-wrap:wrap;gap:22px;margin-top:auto;padding-top:6px}
   .metric .n{font-family:"Chakra Petch",sans-serif;font-size:22px;color:var(--ink);line-height:1}
   .metric .l{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-top:5px}
@@ -259,8 +263,7 @@
     <div class="about-grid">
       <div class="about-body reveal">
         <p>Trabalho na <strong>equipe de automação de uma indústria alimentícia</strong>, desenvolvendo ferramentas e plataformas internas que substituem processos manuais e trazem confiabilidade para a operação.</p>
-        <p>Minha faixa vai do <strong>firmware em C/C++</strong> rodando em microcontroladores <strong>ESP32 e Arduino</strong>, passando pela integração de equipamentos via <strong>Modbus, UART e TCP/IP</strong>, até o <strong>software full-stack</strong> em Python e TypeScript que transforma esses dados em algo útil.</p>
-        <p>Fora do trabalho, estou escrevendo a apostila <strong>"C++ do Zero ao Profissional"</strong> — 28 módulos que vão do básico ao avançado.</p>
+        <p>Minha faixa vai do <strong>firmware em C/C++</strong> rodando em microcontroladores <strong>ESP32 e Arduino</strong>, passando pela integração de equipamentos e telemetria via <strong>UART e TCP/IP</strong>, até o <strong>software full-stack</strong> em Python e TypeScript que transforma esses dados em algo útil.</p>
         <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px">
           <span class="tag">Scrum</span><span class="tag">Kanban</span><span class="tag">Scrumban</span>
           <span class="tag a">Artia</span><span class="tag a">MS Planner</span>
@@ -318,51 +321,81 @@
 <section id="projects">
   <div class="wrap">
     <span class="eyebrow"><span class="addr">0x02</span> projetos</span>
-    <h2 class="title reveal">Projetos em destaque</h2>
+    <h2 class="title reveal">Projetos</h2>
+    <p class="lede reveal">Seleção de repositórios — do firmware em C++ ao full-stack em TypeScript.</p>
     <div class="proj-grid">
 
       <article class="card feat reveal">
-        <span class="idx">PRJ_01 · FULL-STACK</span>
+        <a class="repo" href="https://github.com/EduardoAugustoBersani/gata.v2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.42-5.27 5.7.41.36.78 1.08.78 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>repo</a>
+        <span class="idx">PRJ_01 · FULL-STACK · DESTAQUE</span>
         <h3>GATA — Gestão de Atividades do Time de Automação</h3>
-        <p class="sub">Plataforma full-stack que substituiu a planilha compartilhada de registro de atividades de automação e manutenção. Regras de negócio no banco (generated columns, CHECK, RLS), gráficos SVG gerados no servidor e SSR pensado para ambientes com sinal ruim, com trilha de auditoria por técnico.</p>
+        <p class="sub">Plataforma full-stack que substituiu a planilha compartilhada de registro de atividades de automação e manutenção. Regras de negócio no próprio banco (colunas geradas, CHECK, Row Level Security), gráficos SVG gerados no servidor e renderização server-side pensada para ambientes com sinal ruim, com seletor de técnico para trilha de auditoria.</p>
         <p class="stackline">Next.js 15 · React 19 · TypeScript · PostgreSQL (Supabase) · Vercel</p>
         <div class="metrics">
           <div class="metric"><div class="n">~4.400</div><div class="l">registros migrados</div></div>
-          <div class="metric"><div class="n">0</div><div class="l">planilhas restantes</div></div>
-          <div class="metric"><div class="n">SSR</div><div class="l">reliability first</div></div>
+          <div class="metric"><div class="n">SSR</div><div class="l">confiabilidade em campo</div></div>
+          <div class="metric"><div class="n">RLS</div><div class="l">regras no banco</div></div>
+        </div>
+      </article>
+
+      <article class="card feat reveal">
+        <a class="repo" href="https://github.com/EduardoAugustoBersani/datalogger_esp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.42-5.27 5.7.41.36.78 1.08.78 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>repo</a>
+        <span class="idx">PRJ_02 · FIRMWARE · DESTAQUE</span>
+        <h3>Data Logger ESP32 — Sinal Celular</h3>
+        <p class="sub">Firmware bare-metal em C++ com FreeRTOS: tarefas fixadas em core comunicando por fila e mutex. Uma lê a UART de um modem, outra grava no cartão SD (SPI) com nome de arquivo dinâmico por horário e rotação a cada 10 MB, e uma terceira configura a APN e dispara <span class="mono" style="color:var(--cyan)">AT#RFSTS</span> a cada 15 s para coletar o status de RF. Inclui brown-out detector configurado direto nos registradores, com ISR em IRAM que protege o cartão contra queda de tensão.</p>
+        <p class="stackline">C++ · ESP32 · FreeRTOS · UART · SD/SPI · AT commands</p>
+        <div class="metrics">
+          <div class="metric"><div class="n">3 tasks</div><div class="l">queue + mutex</div></div>
+          <div class="metric"><div class="n">BOD</div><div class="l">proteção por registrador</div></div>
+          <div class="metric"><div class="n">15 s</div><div class="l">poll de RF</div></div>
         </div>
       </article>
 
       <article class="card reveal">
-        <span class="idx">PRJ_02 · FIRMWARE</span>
-        <h3>ESP32 · Telemetria IoT</h3>
-        <p class="sub">Firmware em C/C++ para ESP32 lendo sensores e enviando telemetria via UART/Modbus e rede (TCP/IP · MQTT), como base para monitoramento de equipamentos em tempo real.</p>
-        <p class="stackline">C · C++ · ESP-IDF · Modbus · MQTT</p>
+        <a class="repo" href="https://github.com/EduardoAugustoBersani/Forest-plot-app" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.42-5.27 5.7.41.36.78 1.08.78 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>repo</a>
+        <span class="idx">PRJ_03 · WEB · ESTATÍSTICA</span>
+        <h3>Forest Plot Builder</h3>
+        <p class="sub">App de meta-análise que calcula Risk Ratio com IC 95%, modelos de efeito fixo e aleatório, heterogeneidade (Q, I², τ²) e teste global — com as funções estatísticas (erf, CDF normal, cauda qui-quadrado) implementadas na mão. Renderiza o forest plot em SVG e exporta SVG e CSV.</p>
+        <p class="stackline">Next.js 15 · React 19 · TypeScript · Tailwind · Radix UI · SVG</p>
         <div class="metrics">
-          <div class="metric"><div class="n">real-time</div><div class="l">monitoramento</div></div>
-          <div class="metric"><div class="n">factory</div><div class="l">grade</div></div>
+          <div class="metric"><div class="n">fixed / random</div><div class="l">dois modelos</div></div>
+          <div class="metric"><div class="n">SVG</div><div class="l">plot exportável</div></div>
         </div>
       </article>
 
       <article class="card reveal">
-        <span class="idx">PRJ_03 · WEB APP</span>
-        <h3>Infusion Pump Calculator</h3>
-        <p class="sub">App web para cálculo de doses de medicação em infusão contínua. Arquitetura cache-first, exclusão lógica e catálogo editável sem login.</p>
-        <p class="stackline">React · TypeScript · Tailwind v4 · Vite · Supabase</p>
+        <a class="repo" href="https://github.com/EduardoAugustoBersani/leitordesinalde_internet" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.42-5.27 5.7.41.36.78 1.08.78 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>repo</a>
+        <span class="idx">PRJ_04 · PYTHON · TELEMETRIA</span>
+        <h3>Leitor de Sinal — Processador de Tramas</h3>
+        <p class="sub">Ferramenta de linha de comando que baixa logs GPRS de um servidor (HTTP com autenticação básica), varre as tramas por número de base e detecta desconexões analisando o penúltimo dígito hexadecimal do campo. Exporta CSVs geral e filtrado, conta ocorrências e lê credenciais de um .env — empacotável como executável.</p>
+        <p class="stackline">Python · Requests · Regex · CSV · dotenv</p>
         <div class="metrics">
-          <div class="metric"><div class="n">cache-first</div><div class="l">arquitetura</div></div>
-          <div class="metric"><div class="n">clinical</div><div class="l">uso prático</div></div>
+          <div class="metric"><div class="n">GPRS</div><div class="l">análise de logs</div></div>
+          <div class="metric"><div class="n">CLI</div><div class="l">executável</div></div>
         </div>
       </article>
 
       <article class="card reveal">
-        <span class="idx">PRJ_04 · TÉCNICO / EDU</span>
-        <h3>Apostila C++ do Zero ao Profissional</h3>
-        <p class="sub">Livro técnico de C++ do básico ao avançado, com build via pandoc → xelatex. Inclui cheat sheet, glossário, prep de entrevista e mais de 30 desafios.</p>
-        <p class="stackline">C++ · LaTeX · Pandoc · XeLaTeX</p>
+        <a class="repo" href="https://github.com/EduardoAugustoBersani/calculadorahidrica" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.42-5.27 5.7.41.36.78 1.08.78 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>repo</a>
+        <span class="idx">PRJ_05 · WEB · CLÍNICO</span>
+        <h3>Calculadora Hídrica</h3>
+        <p class="sub">Calculadora clínica web que, a partir de entrada/saída de líquidos, peso e tipo de fórmula, calcula balanço total e hídrico, diurese, oferta hídrica e oferta calórica — usando a densidade calórica de cada fórmula. Sem dependências, JavaScript puro.</p>
+        <p class="stackline">HTML · CSS · JavaScript (vanilla)</p>
         <div class="metrics">
-          <div class="metric"><div class="n">28</div><div class="l">módulos</div></div>
-          <div class="metric"><div class="n">30+</div><div class="l">desafios</div></div>
+          <div class="metric"><div class="n">vanilla</div><div class="l">zero dependência</div></div>
+          <div class="metric"><div class="n">clínico</div><div class="l">uso prático</div></div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <a class="repo" href="https://github.com/EduardoAugustoBersani/An-lise-de-dados-de-im-veis-utilizando-a-biblioteca-Pandas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.71 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.44-2.7 5.42-5.27 5.7.41.36.78 1.08.78 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>repo</a>
+        <span class="idx">PRJ_06 · PYTHON · DATA</span>
+        <h3>Análise de Dados de Imóveis</h3>
+        <p class="sub">Análise exploratória de uma base de aluguéis com Pandas: limpeza e tratamento de nulos, filtros condicionais, criação de colunas derivadas (valor mensal, anual, descrição) e visualizações de valor médio e distribuição por tipo com Matplotlib.</p>
+        <p class="stackline">Python · Pandas · Matplotlib</p>
+        <div class="metrics">
+          <div class="metric"><div class="n">EDA</div><div class="l">limpeza + filtros</div></div>
+          <div class="metric"><div class="n">plots</div><div class="l">Matplotlib</div></div>
         </div>
       </article>
 
